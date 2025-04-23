@@ -1,6 +1,6 @@
 'use client';
 
-import { useAppContext } from '@/app/context/AppContext';
+import { useAppContext } from '@/context/AppContext';
 
 export default function CandidatesPage() {
   const { user } = useAppContext();

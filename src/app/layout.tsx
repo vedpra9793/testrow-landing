@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import { AppProvider } from "@/context/AppContext";
 
 export const metadata: Metadata = {
   title: "ScreenWise AI",
@@ -19,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        {children}
+      <body className="antialiased">
+        <AppProvider>
+          {children}
+        </AppProvider>
       </body>
     </html>
   );
