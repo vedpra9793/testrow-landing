@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TestRow - Smarter Testing, Powered by AI</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#7C3AED',secondary:'#4C1D95'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+.fade-in-up {
+animation: fadeInUp 1s ease-out;
+}
+.fade-in {
+animation: fadeIn 1s ease-out;
+}
+.slide-in {
+animation: slideIn 1s ease-out;
+}
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+@keyframes slideIn {
+from {
+transform: translateX(-20px);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+.animate-fade-up {
+animation: fadeUp 0.3s ease-out;
+}
+@keyframes fadeUp {
+from {
+opacity: 0;
+transform: translateY(20px) scale(0.95);
+}
+to {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.hero-gradient {
+background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(240,249,255,1) 100%);
+}
+input:focus {
+outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-white text-gray-800">
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="container mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/a8d0e8c282ebd27c9b7ab383545557c7.png" alt="TestRow Logo" class="h-8 w-auto">
+<span class="text-2xl text-primary font-bold ml-2">TestRow</span>
+</a>
+<nav class="hidden md:flex ml-12">
+<a href="#services" class="mx-4 text-gray-700 hover:text-primary transition-colors">Services</a>
+<a href="#testmateai" class="mx-4 text-gray-700 hover:text-primary transition-colors">TestMateAI</a>
+<a href="#testimonials" class="mx-4 text-gray-700 hover:text-primary transition-colors">Testimonials</a>
+<a href="#pricing" class="mx-4 text-gray-700 hover:text-primary transition-colors">Pricing</a>
+</nav>
+</div>
+<div class="flex items-center">
+<button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors">Book a Demo</button>
+<button class="md:hidden ml-4 w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 w-full overflow-hidden bg-gradient-to-br from-violet-50 via-white to-violet-50">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTBlMGUwIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-10"></div>
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center w-full relative">
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-violet-200/20 rounded-full blur-3xl"></div>
+<div class="w-full md:w-1/2 mb-10 md:mb-0">
+<h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight fade-in-up">
+<span class="block mb-2">Transform Your QA</span>
+<span class="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-violet-500">With AI-Powered Testing</span>
+</h1>
+<p class="text-xl text-gray-600 mb-8">Cut Testing Time by 80%. Ship Faster with Zero Quality Compromise.</p>
+<div class="flex flex-wrap gap-4 mb-8">
+<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium">Book a Free Demo</button>
+<button class="bg-white border border-gray-300 text-gray-700 px-6 py-3 !rounded-button whitespace-nowrap hover:bg-gray-50 transition-colors font-medium">Watch Demo Video</button>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-8">
+<div class="text-center">
+<div class="text-2xl font-bold text-primary mb-1">80%</div>
+<div class="text-sm text-gray-600">Faster Testing</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary mb-1">100%</div>
+<div class="text-sm text-gray-600">Coverage</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary mb-1">60%</div>
+<div class="text-sm text-gray-600">Cost Reduction</div>
+</div>
+</div>
+<p class="text-gray-600 max-w-xl">TestRow's AI-powered platform automates test creation, execution, and maintenance. Our intelligent testing solution helps you deliver high-quality software faster than ever before.</p>
+</div>
+<div class="w-full md:w-1/2">
+<img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/c40ff230b193cb50bdedeaf5c5e59682.png" alt="TestRow AI Testing Platform" class="w-full h-auto rounded-lg shadow-2xl object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- Why TestRow Section -->
+<section class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<span class="text-primary font-medium mb-2 inline-block">THE TESTROW ADVANTAGE</span>
+<h2 class="text-3xl font-bold mb-4">Accelerate Testing Without Compromising Quality</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Our AI-powered platform transforms your testing process, delivering unprecedented speed and accuracy.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+<div class="relative bg-gradient-to-br from-violet-50 to-white p-8 rounded-lg shadow-lg">
+<div class="absolute -top-6 left-8">
+<div class="w-12 h-12 bg-primary rounded-lg shadow-lg flex items-center justify-center">
+<i class="ri-rocket-line ri-xl text-white"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mt-6 mb-4">Lightning-Fast Execution</h3>
+<p class="text-gray-600">Our AI analyzes your requirements and generates comprehensive test cases in minutes, not days. Automated execution means faster results.</p>
+<ul class="mt-4 space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Instant test case generation
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Parallel test execution
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Real-time results
+</li>
+</ul>
+</div>
+<div class="relative bg-gradient-to-br from-violet-50 to-white p-8 rounded-lg shadow-lg">
+<div class="absolute -top-6 left-8">
+<div class="w-12 h-12 bg-primary rounded-lg shadow-lg flex items-center justify-center">
+<i class="ri-shield-check-line ri-xl text-white"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mt-6 mb-4">Unmatched Accuracy</h3>
+<p class="text-gray-600">Our AI ensures comprehensive coverage while intelligent validation catches even the most subtle issues before they reach production.</p>
+<ul class="mt-4 space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+100% requirement coverage
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Smart edge case detection
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Automated regression testing
+</li>
+</ul>
+</div>
+<div class="relative bg-gradient-to-br from-violet-50 to-white p-8 rounded-lg shadow-lg">
+<div class="absolute -top-6 left-8">
+<div class="w-12 h-12 bg-primary rounded-lg shadow-lg flex items-center justify-center">
+<i class="ri-line-chart-line ri-xl text-white"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mt-6 mb-4">Continuous Improvement</h3>
+<p class="text-gray-600">Our platform learns from each test cycle, continuously optimizing test suites and identifying opportunities for improvement.</p>
+<ul class="mt-4 space-y-2">
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+AI-driven optimization
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Predictive analytics
+</li>
+<li class="flex items-center text-sm text-gray-600">
+<i class="ri-check-line text-primary mr-2"></i>
+Automated maintenance
+</li>
+</ul>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+<div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-time-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-center mb-2">80%</h3>
+<h4 class="text-lg font-medium text-center mb-4">Reduction in Test Design Time</h4>
+<p class="text-gray-600 text-center">Our AI-powered test generation reduces the time spent creating test cases by 80%, allowing your team to focus on execution.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+<div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-check-double-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-center mb-2">100%</h3>
+<h4 class="text-lg font-medium text-center mb-4">Requirement Coverage</h4>
+<p class="text-gray-600 text-center">Our comprehensive testing methodology ensures complete coverage of all your requirements, eliminating blind spots.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+<div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+<i class="ri-rocket-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-center mb-2">30%</h3>
+<h4 class="text-lg font-medium text-center mb-4">Faster Release Cycles</h4>
+<p class="text-gray-600 text-center">Our clients report releasing products 30% faster with fewer critical bugs, improving time-to-market significantly.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold mb-4">What We Offer</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Comprehensive QA services tailored to your specific needs and technology stack.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-user-search-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Manual Testing</h3>
+<p class="text-gray-600 mb-4">Expert-led exploratory and scripted testing to uncover edge cases and user experience issues that automated tests might miss.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-code-box-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Automation Testing</h3>
+<p class="text-gray-600 mb-4">Scalable test automation frameworks using industry-leading tools like Selenium, Cypress, and Playwright for reliable regression testing.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-terminal-box-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">API & Backend Testing</h3>
+<p class="text-gray-600 mb-4">Comprehensive API testing services to ensure your backend systems function correctly, with performance and security validation.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-smartphone-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Mobile App Testing</h3>
+<p class="text-gray-600 mb-4">Cross-platform mobile testing across iOS and Android devices, ensuring compatibility and optimal performance.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-robot-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">AI-Augmented QA</h3>
+<p class="text-gray-600 mb-4">Cutting-edge AI tools that enhance traditional testing methods, automatically generating test cases and identifying potential issues.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow h-full">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6">
+<i class="ri-file-chart-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Detailed Reporting</h3>
+<p class="text-gray-600 mb-4">Comprehensive test reports with actionable insights, traceability matrices, and quality metrics to guide your development decisions.</p>
+<a href="#" class="text-primary font-medium hover:underline inline-flex items-center">
+Learn more
+<i class="ri-arrow-right-line ri-sm ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- TestMateAI Section -->
+<section id="testmateai" class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="w-full md:w-1/2">
+<span class="text-primary font-medium mb-2 inline-block">INTRODUCING</span>
+<h2 class="text-3xl font-bold mb-6">TestMateAI</h2>
+<p class="text-gray-600 mb-8">Our revolutionary AI-powered testing assistant that transforms requirements into comprehensive test cases in minutes, not days.</p>
+<div class="space-y-4 mb-8">
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1 mr-3">
+<i class="ri-check-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Auto-generates test cases</h4>
+<p class="text-gray-600">Convert user stories and requirements directly into detailed test cases with a single click.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1 mr-3">
+<i class="ri-check-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">100% requirement coverage</h4>
+<p class="text-gray-600">AI analysis ensures no requirement is overlooked, eliminating testing blind spots.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1 mr-3">
+<i class="ri-check-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Seamless tool integration</h4>
+<p class="text-gray-600">Export test cases to Jira, TestRail, and other popular testing platforms with one click.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center mt-1 mr-3">
+<i class="ri-check-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Intelligent test prioritization</h4>
+<p class="text-gray-600">Automatically prioritize tests based on risk and impact to focus testing efforts where they matter most.</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium">Learn More About TestMateAI</button>
+</div>
+<div class="w-full md:w-1/2">
+<img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/b6b66a9c54e4258a699bf36d9ea64a75.png" alt="TestMateAI Platform" class="w-full h-auto rounded-lg shadow-xl object-cover object-top">
+</div>
+</div>
+</div>
+</section>
+<!-- Benefits Section -->
+<section class="py-20 bg-gray-50">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="text-3xl font-bold mb-6">Why Teams Love TestMateAI</h2>
+<div class="space-y-6">
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-time-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Save 10+ hours per sprint</h3>
+<p class="text-gray-600">Dramatically reduce the time spent on test case creation and maintenance, allowing your team to focus on execution and innovation.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-team-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Perfect for Agile teams</h3>
+<p class="text-gray-600">Designed to integrate seamlessly with Agile workflows, enabling rapid test creation that keeps pace with development sprints.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-bug-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Catch more bugs before release</h3>
+<p class="text-gray-600">AI-generated test cases uncover edge cases and scenarios that human testers might overlook, improving overall quality.</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold mb-6">Built for Modern QA Needs</h2>
+<div class="space-y-6">
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-scales-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Scalable for any team size</h3>
+<p class="text-gray-600">Whether you're a startup or enterprise, our platform scales to meet your testing needs without compromising quality or speed.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-global-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Remote-ready collaboration</h3>
+<p class="text-gray-600">Cloud-based platform enables seamless collaboration between distributed teams with real-time updates and shared test assets.</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-money-dollar-circle-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Startup-friendly plans</h3>
+<p class="text-gray-600">Flexible pricing options designed specifically for growing companies, with plans that scale as your testing needs evolve.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 bg-white">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold mb-4">What Our Clients Say</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what teams using TestRow have to say.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-gray-50 p-8 rounded-lg">
+<div class="flex items-center mb-6">
+<div class="text-primary text-4xl mr-4">
+<i class="ri-double-quotes-l"></i>
+</div>
+<div class="flex-1">
+<div class="flex">
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-6 italic">TestRow's AI-powered testing platform has transformed our QA process. We've cut our test creation time by 75% while improving our test coverage. The ability to automatically generate test cases from user stories has been a game-changer for our agile workflow.</p>
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20female%20tech%20executive%20with%20short%20dark%20hair%2C%20wearing%20business%20attire%2C%20smiling%20confidently%20against%20a%20neutral%20background.%20The%20image%20should%20be%20clean%2C%20professional%2C%20and%20suitable%20for%20a%20corporate%20testimonial.&width=80&height=80&seq=3&orientation=squarish" alt="Jennifer Mitchell" class="w-12 h-12 rounded-full object-cover object-top mr-4">
+<div>
+<h4 class="font-bold">Jennifer Mitchell</h4>
+<p class="text-gray-600 text-sm">VP of Engineering, FinTech Solutions</p>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg">
+<div class="flex items-center mb-6">
+<div class="text-primary text-4xl mr-4">
+<i class="ri-double-quotes-l"></i>
+</div>
+<div class="flex-1">
+<div class="flex">
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-6 italic">As a startup with limited QA resources, TestRow has been invaluable. Their TestMateAI tool helps us maintain high quality standards without expanding our team. We've reduced critical bugs in production by over 60% since implementing their solution.</p>
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20male%20tech%20founder%20with%20glasses%2C%20wearing%20a%20casual%20button-up%20shirt%2C%20smiling%20naturally%20against%20a%20light%20background.%20The%20image%20should%20be%20clean%2C%20modern%2C%20and%20suitable%20for%20a%20startup%20testimonial.&width=80&height=80&seq=4&orientation=squarish" alt="Michael Rodriguez" class="w-12 h-12 rounded-full object-cover object-top mr-4">
+<div>
+<h4 class="font-bold">Michael Rodriguez</h4>
+<p class="text-gray-600 text-sm">CTO & Co-founder, HealthTech Connect</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-20 bg-primary text-white">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl font-bold mb-6">Ready to Accelerate Your QA?</h2>
+<p class="text-blue-100 max-w-2xl mx-auto mb-8">Join hundreds of teams that have transformed their testing process with TestRow. Get started today and see the difference AI-powered QA can make.</p>
+<div class="flex flex-wrap justify-center gap-4 mb-8">
+<button class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors font-medium">Schedule Demo</button>
+<button class="bg-transparent border border-white text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors font-medium">Contact Sales</button>
+</div>
+<p class="text-blue-100 text-sm">No credit card required. Free 14-day trial available.</p>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<a href="#" class="flex items-center mb-4">
+<img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/a8d0e8c282ebd27c9b7ab383545557c7.png" alt="TestRow Logo" class="h-8 w-auto">
+<span class="text-2xl text-white font-bold ml-2">TestRow</span>
+</a>
+<p class="text-gray-400 mb-4">Smarter testing, powered by AI. Accelerate your QA process and deliver quality software faster.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-line"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
+<i class="ri-github-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Services</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Manual Testing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automation Testing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Testing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mobile Testing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI-Augmented QA</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Company</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-4">Stay Updated</h3>
+<p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
+<div class="flex">
+<input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l border-none w-full text-sm">
+<button class="bg-primary text-white px-4 py-2 rounded-r !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 TestRow. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('fade-in-up');
+observer.unobserve(entry.target);
+}
+});
+}, {
+threshold: 0.1
+});
+// Observe all sections except hero
+document.querySelectorAll('section:not(:first-of-type)').forEach(section => {
+observer.observe(section);
+});
+// Observe all cards
+document.querySelectorAll('.bg-white.p-8.rounded-lg').forEach(card => {
+observer.observe(card);
+});
+// Mobile menu toggle
+const menuButton = document.querySelector('button.md\\:hidden');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out';
+mobileMenu.innerHTML = `
+<div class="flex justify-between items-center p-6 border-b">
+<a href="#" class="flex items-center">
+<img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/a8d0e8c282ebd27c9b7ab383545557c7.png" alt="TestRow Logo" class="h-8 w-auto">
+<span class="text-2xl text-primary font-bold ml-2">TestRow</span>
+</a>
+<button class="w-10 h-10 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<nav class="p-6">
+<a href="#services" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Services</a>
+<a href="#testmateai" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">TestMateAI</a>
+<a href="#testimonials" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Testimonials</a>
+<a href="#pricing" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Pricing</a>
+<a href="#contact" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Log In</a>
+<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium mt-6 w-full">Book a Demo</button>
+</nav>
+`;
+document.body.appendChild(mobileMenu);
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('translate-x-full');
+document.body.classList.toggle('overflow-hidden');
+});
+mobileMenu.querySelector('button').addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+document.body.classList.remove('overflow-hidden');
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+document.body.classList.remove('overflow-hidden');
+});
+});
+});
+</script>
+</body>
+</html>
