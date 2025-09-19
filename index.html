@@ -58,6 +58,70 @@ opacity: 1;
 transform: translateY(0) scale(1);
 }
 }
+/* Contact Us Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6B7280;
+}
+
+/* Toast Message */
+.toast-message {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.toast-message.show {
+    opacity: 1;
+    visibility: visible;
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,12 +158,12 @@ margin: 0;
 <nav class="hidden md:flex ml-12">
 <a href="#services" class="mx-4 text-gray-700 hover:text-primary transition-colors">Services</a>
 <a href="#testmateai" class="mx-4 text-gray-700 hover:text-primary transition-colors">TestMateAI</a>
-<a href="#testimonials" class="mx-4 text-gray-700 hover:text-primary transition-colors">Testimonials</a>
-<a href="#pricing" class="mx-4 text-gray-700 hover:text-primary transition-colors">Pricing</a>
+<a href="#key-use-cases" class="mx-4 text-gray-700 hover:text-primary transition-colors">Key Use Cases</a>
+<a href="#about-us" class="mx-4 text-gray-700 hover:text-primary transition-colors">About Us</a>
 </nav>
 </div>
 <div class="flex items-center">
-<button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors">Book a Demo</button>
+<button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors" onclick="document.getElementById('contactModal').classList.add('show')">Contact Us</button>
 <button class="md:hidden ml-4 w-10 h-10 flex items-center justify-center">
 <i class="ri-menu-line ri-lg"></i>
 </button>
@@ -129,7 +193,7 @@ margin: 0;
 <div class="text-sm text-gray-600">Faster Testing</div>
 </div>
 <div class="text-center">
-<div class="text-2xl font-bold text-primary mb-1">100%</div>
+<div class="text-2xl font-bold text-primary mb-1">99.99%</div>
 <div class="text-sm text-gray-600">Coverage</div>
 </div>
 <div class="text-center">
@@ -137,7 +201,10 @@ margin: 0;
 <div class="text-sm text-gray-600">Cost Reduction</div>
 </div>
 </div>
-<p class="text-gray-600 max-w-xl">TestRow's AI-powered platform automates test creation, execution, and maintenance. Our intelligent testing solution helps you deliver high-quality software faster than ever before.</p>
+<p class="text-gray-600 max-w-xl">At TestRow, we provide next-generation software testing services powered by AI. 
+    Our expert team combines intelligent automation with deep QA expertise to handle 
+    test creation, execution, and maintenance—helping you deliver reliable, 
+    high-quality software faster and more cost-effectively.</p>
 </div>
 <div class="w-full md:w-1/2">
 <img src="https://static.readdy.ai/image/7337760fcc49e1cc08d98adc67d9b1c6/c40ff230b193cb50bdedeaf5c5e59682.png" alt="TestRow AI Testing Platform" class="w-full h-auto rounded-lg shadow-2xl object-cover object-top">
@@ -188,7 +255,7 @@ Real-time results
 <ul class="mt-4 space-y-2">
 <li class="flex items-center text-sm text-gray-600">
 <i class="ri-check-line text-primary mr-2"></i>
-100% requirement coverage
+99.99% requirement coverage
 </li>
 <li class="flex items-center text-sm text-gray-600">
 <i class="ri-check-line text-primary mr-2"></i>
@@ -237,7 +304,7 @@ Automated maintenance
 <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 mx-auto">
 <i class="ri-check-double-line ri-xl text-primary"></i>
 </div>
-<h3 class="text-2xl font-bold text-center mb-2">100%</h3>
+<h3 class="text-2xl font-bold text-center mb-2">99.99%</h3>
 <h4 class="text-lg font-medium text-center mb-4">Requirement Coverage</h4>
 <p class="text-gray-600 text-center">Our comprehensive testing methodology ensures complete coverage of all your requirements, eliminating blind spots.</p>
 </div>
@@ -352,7 +419,7 @@ Learn more
 <i class="ri-check-line ri-lg text-primary"></i>
 </div>
 <div>
-<h4 class="font-medium">100% requirement coverage</h4>
+<h4 class="font-medium">99.99% requirement coverage</h4>
 <p class="text-gray-600">AI analysis ensures no requirement is overlooked, eliminating testing blind spots.</p>
 </div>
 </div>
@@ -454,64 +521,83 @@ Learn more
 </div>
 </div>
 </section>
-<!-- Testimonials Section -->
-<section id="testimonials" class="py-20 bg-white">
+<!-- Key Use Cases for TestRow Section -->
+<section id="key-use-cases" class="py-20 bg-white">
 <div class="container mx-auto px-6">
 <div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">What Our Clients Say</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what teams using TestRow have to say.</p>
+<h2 class="text-3xl font-bold mb-4">Key Use Cases for TestRow</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Discover how TestRow can transform your QA process across various scenarios.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="bg-gray-50 p-8 rounded-lg">
-<div class="flex items-center mb-6">
-<div class="text-primary text-4xl mr-4">
-<i class="ri-double-quotes-l"></i>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-rocket-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Accelerated Product Launches</h3>
+<p class="text-gray-600 mb-4">Ensure faster time-to-market with AI-powered automation testing, reducing release cycles without compromising quality.</p>
 </div>
-<div class="flex-1">
-<div class="flex">
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-lightbulb-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Seamless Startup Testing Support</h3>
+<p class="text-gray-600 mb-4">Perfect for startups and small businesses that need reliable testing services without heavy investments in large QA teams.</p>
 </div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-refresh-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Regression Testing at Scale</h3>
+<p class="text-gray-600 mb-4">Run large regression suites with AI-driven self-healing scripts, minimizing maintenance efforts and ensuring consistent quality across releases.</p>
 </div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-terminal-box-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">API Testing & Validation</h3>
+<p class="text-gray-600 mb-4">Validate APIs in real-time with AI-powered tools, ensuring secure and stable integrations for microservices and third-party platforms.</p>
 </div>
-<p class="text-gray-700 mb-6 italic">TestRow's AI-powered testing platform has transformed our QA process. We've cut our test creation time by 75% while improving our test coverage. The ability to automatically generate test cases from user stories has been a game-changer for our agile workflow.</p>
-<div class="flex items-center">
-<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20female%20tech%20executive%20with%20short%20dark%20hair%2C%20wearing%20business%20attire%2C%20smiling%20confidently%20against%20a%20neutral%20background.%20The%20image%20should%20be%20clean%2C%20professional%2C%20and%20suitable%20for%20a%20corporate%20testimonial.&width=80&height=80&seq=3&orientation=squarish" alt="Jennifer Mitchell" class="w-12 h-12 rounded-full object-cover object-top mr-4">
-<div>
-<h4 class="font-bold">Jennifer Mitchell</h4>
-<p class="text-gray-600 text-sm">VP of Engineering, FinTech Solutions</p>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-user-check-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Manual Testing Reinvented</h3>
+<p class="text-gray-600 mb-4">Enhance manual testing efficiency with TestMate (your in-house AI tool), generating test cases automatically from Jira tickets or requirements.</p>
 </div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-shield-check-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Risk-Based Testing for Smarter Coverage</h3>
+<p class="text-gray-600 mb-4">Prioritize test cases with AI-driven risk analysis, focusing on the most critical features that impact customers and business.</p>
 </div>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-git-branch-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Continuous Testing in CI/CD</h3>
+<p class="text-gray-600 mb-4">Integrate seamlessly with CI/CD pipelines for real-time feedback, enabling DevOps teams to ship confidently and frequently.</p>
 </div>
-<div class="bg-gray-50 p-8 rounded-lg">
-<div class="flex items-center mb-6">
-<div class="text-primary text-4xl mr-4">
-<i class="ri-double-quotes-l"></i>
-</div>
-<div class="flex-1">
-<div class="flex">
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-<i class="ri-star-fill text-yellow-400"></i>
-</div>
-</div>
-</div>
-<p class="text-gray-700 mb-6 italic">As a startup with limited QA resources, TestRow has been invaluable. Their TestMateAI tool helps us maintain high quality standards without expanding our team. We've reduced critical bugs in production by over 60% since implementing their solution.</p>
-<div class="flex items-center">
-<img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20male%20tech%20founder%20with%20glasses%2C%20wearing%20a%20casual%20button-up%20shirt%2C%20smiling%20naturally%20against%20a%20light%20background.%20The%20image%20should%20be%20clean%2C%20modern%2C%20and%20suitable%20for%20a%20startup%20testimonial.&width=80&height=80&seq=4&orientation=squarish" alt="Michael Rodriguez" class="w-12 h-12 rounded-full object-cover object-top mr-4">
-<div>
-<h4 class="font-bold">Michael Rodriguez</h4>
-<p class="text-gray-600 text-sm">CTO & Co-founder, HealthTech Connect</p>
+<div class="bg-gray-50 p-8 rounded-lg shadow-md">
+<i class="ri-money-dollar-box-line ri-2x text-primary mb-4 block"></i>
+<h3 class="text-xl font-bold mb-2">Cost-Effective QA for Growing Businesses</h3>
+<p class="text-gray-600 mb-4">Reduce QA costs with AI + human collaboration, delivering enterprise-grade testing solutions tailored to smaller budgets.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+<!-- About Us Section -->
+<section id="about-us" class="relative py-20 bg-gradient-to-br from-violet-50 to-white overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTBlMGUwIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">About TestRow</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">At TestRow, we believe smarter testing is the backbone of every successful product. We are a next-generation software testing company that blends AI innovation with human expertise to deliver faster, more accurate, and cost-effective QA solutions.</p>
+        </div>
+        <div class="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-xl grid md:grid-cols-2 gap-10 items-center border border-gray-200">
+            <div>
+                <h3 class="text-2xl font-bold text-primary mb-4">Our Mission</h3>
+                <p class="text-gray-700 mb-6 leading-relaxed">Our mission is simple: help startups and growing businesses ship high-quality software with confidence.</p>
+                <p class="text-gray-700 leading-relaxed">With a deep focus on AI-powered test automation, API validation, regression testing, and manual testing support, we ensure end-to-end quality coverage for your applications. Our in-house AI platform, TestMateAI, transforms the way teams generate test cases, automate scripts, and maintain test suites—drastically reducing time-to-market.</p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-primary mb-4">Our Differentiator</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-center"><i class="ri-check-double-line text-primary text-xl mr-3"></i>AI + Human Collaboration = Speed, Accuracy, and Cost Savings</li>
+                    <li class="flex items-center"><i class="ri-check-double-line text-primary text-xl mr-3"></i>Tailored QA solutions designed for startups and SMBs</li>
+                    <li class="flex items-center"><i class="ri-check-double-line text-primary text-xl mr-3"></i>End-to-end support across manual, automation, and AI-powered testing</li>
+                    <li class="flex items-center"><i class="ri-check-double-line text-primary text-xl mr-3"></i>A vision to make QA smarter, faster, and future-ready</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center text-gray-600 mt-10 max-w-2xl mx-auto">Whether you are a startup launching your first product or a scaling business with complex testing needs, TestRow is your trusted QA partner.</p>
+    </div>
 </section>
 <!-- Final CTA Section -->
 <section class="py-20 bg-primary text-white">
@@ -519,10 +605,9 @@ Learn more
 <h2 class="text-3xl font-bold mb-6">Ready to Accelerate Your QA?</h2>
 <p class="text-blue-100 max-w-2xl mx-auto mb-8">Join hundreds of teams that have transformed their testing process with TestRow. Get started today and see the difference AI-powered QA can make.</p>
 <div class="flex flex-wrap justify-center gap-4 mb-8">
-<button class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors font-medium">Schedule Demo</button>
-<button class="bg-transparent border border-white text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors font-medium">Contact Sales</button>
+<button class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors font-medium" onclick="document.getElementById('contactModal').classList.add('show')">Schedule Demo</button>
+<button class="bg-transparent border border-white text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors font-medium" onclick="document.getElementById('contactModal').classList.add('show')">Contact Sales</button>
 </div>
-<p class="text-blue-100 text-sm">No credit card required. Free 14-day trial available.</p>
 </div>
 </section>
 <!-- Footer -->
@@ -539,7 +624,7 @@ Learn more
 <a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
 <i class="ri-twitter-x-line"></i>
 </a>
-<a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
+<a href="https://www.linkedin.com/company/test-row/posts/?feedView=all" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
 <i class="ri-linkedin-line"></i>
 </a>
 <a href="#" class="text-gray-400 hover:text-white transition-colors w-8 h-8 flex items-center justify-center">
@@ -624,10 +709,10 @@ mobileMenu.innerHTML = `
 <nav class="p-6">
 <a href="#services" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Services</a>
 <a href="#testmateai" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">TestMateAI</a>
-<a href="#testimonials" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Testimonials</a>
-<a href="#pricing" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Pricing</a>
-<a href="#contact" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Log In</a>
-<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium mt-6 w-full">Book a Demo</button>
+<a href="#key-use-cases" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">Key Use Cases</a>
+<a href="#about-us" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b">About Us</a>
+<a href="#" class="block py-3 text-gray-700 hover:text-primary transition-colors border-b" onclick="document.getElementById('contactModal').classList.add('show'); mobileMenu.classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden');">Log In</a>
+<button class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium mt-6 w-full" onclick="document.getElementById('contactModal').classList.add('show'); mobileMenu.classList.add('translate-x-full'); document.body.classList.remove('overflow-hidden');">Book a Demo</button>
 </nav>
 `;
 document.body.appendChild(mobileMenu);
@@ -645,8 +730,59 @@ mobileMenu.classList.add('translate-x-full');
 document.body.classList.remove('overflow-hidden');
 });
 });
+// Handle contact form submission
+const contactForm = document.querySelector('#contactModal form');
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Hide the modal
+    document.getElementById('contactModal').classList.remove('show');
+
+    // Show the toast message
+    const toast = document.getElementById('toastMessage');
+    toast.classList.add('show');
+
+    // Hide the toast message after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+
+    // Optionally, clear the form fields
+    contactForm.reset();
+});
 });
 </script>
 
-</body>
-</html>
+<!-- Contact Us Modal -->
+<div id="contactModal" class="modal-overlay">
+<div class="modal-content">
+<button class="modal-close-button" onclick="document.getElementById('contactModal').classList.remove('show')">&times;</button>
+<h2 class="text-3xl font-bold mb-6 text-center">Contact Us</h2>
+<form action="#" method="POST" class="space-y-6">
+<div>
+<label for="modal-name" class="block text-sm font-medium text-gray-700">Name</label>
+<input type="text" id="modal-name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm" placeholder="Your Name" required>
+</div>
+<div>
+<label for="modal-email" class="block text-sm font-medium text-gray-700">Email</label>
+<input type="email" id="modal-email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm" placeholder="you@example.com" required>
+</div>
+<div>
+<label for="modal-company" class="block text-sm font-medium text-gray-700">Company (Optional)</label>
+<input type="text" id="modal-company" name="company" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm" placeholder="Your Company">
+</div>
+<div>
+<label for="modal-message" class="block text-sm font-medium text-gray-700">Message</label>
+<textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm" placeholder="How can we help you?" required></textarea>
+</div>
+<div>
+<button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors font-medium">Send Message</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- Toast Message -->
+<div id="toastMessage" class="toast-message">
+Thanks for connecting! Our team will connect with you soon.
+</div>
